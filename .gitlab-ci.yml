@@ -1,0 +1,111 @@
+---
+# PIPELINE STAGES
+stages:
+- test
+- deploy
+# - align - saving this for a future enhancement
+
+Unit-Tests:
+  stage: test
+  rules:
+    # don't include this job when a tag is created manually
+    - if: $CI_COMMIT_TAG
+      when: never
+      # otherwise, execute the job when all jobs in earlier stages succeed
+    - if: $CI_OPEN_MERGE_REQUESTS
+      when: on_success
+  tags:
+    - docker
+  image: node:fermium
+  script:
+    - ls -lah
+    - npm ci
+    - CI=true && npm run test:unit --silent
+  interruptible: true
+
+Cypress:
+  stage: test
+  rules:
+    # don't include this job when a tag is created manually
+    - if: $CI_COMMIT_TAG
+      when: never
+      # otherwise, execute the job when all jobs in earlier stages succeed
+    - if: $CI_OPEN_MERGE_REQUESTS
+      when: on_success
+  tags:
+    - docker
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  script:
+    - ls -lah
+    - npm ci
+    - npm i -g spandx
+    - spandx init cp addhosts
+    - npm run cypress:ci --quiet
+  interruptible: true
+
+QA-Deploy-Spaship:
+  stage: deploy
+  # only include this job in the pipeline if changes were pushed to the pre-prod branch
+  rules:
+    - if: $CI_COMMIT_BRANCH == "pre-prod"
+      when: manual
+  tags:
+    - docker
+  image: node:fermium
+  script:
+    - npm ci
+    - npm run build
+    - npm run spaship qa $SPASHIP_KEY_QA $CI_COMMIT_SHA 
+  interruptible: true
+
+Stage-Deploy-Spaship:
+  stage: deploy
+  # only include this job in the pipeline if changes were pushed to the pre-prod branch
+  rules:
+    - if: $CI_COMMIT_BRANCH == "pre-prod"
+      when: manual
+  tags:
+    - docker
+  image: node:fermium
+  script:
+    - npm ci
+    - npm run build
+    - npm run spaship stage $SPASHIP_KEY_STAGE $CI_COMMIT_SHA
+  interruptible: true
+
+Tag-Deploy-Latest:
+  stage: deploy
+  # only include the job in the pipeline if a tag was created manually
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: manual
+  tags:
+    - docker
+  image: node:fermium
+  script:
+    - npm ci
+    - npm run build
+    - npm run spaship prod $SPASHIP_KEY_PROD $CI_COMMIT_SHA
+  interruptible: true
+
+# Align-Branches:
+#   stage: align
+#   variables:
+#     # make a clone of the repo from scratch
+#     GIT_STRATEGY: clone
+#     # make a deep clone of entire repo - this disables shallow cloning
+#     GIT_DEPTH: 0
+#     # skip certificate verification
+#     GIT_SSL_NO_VERIFY: "true"
+#   rules:
+#     # only include the job in the pipeline if a tag was created manually
+#     - if: $CI_COMMIT_TAG
+#       when: manual
+#   tags: 
+#     - docker
+#   image: node:fermium
+#   script:
+#     - git fetch origin main
+#     - git fetch origin pre-prod
+#     - git checkout pre-prod origin/pre-prod
+#     - git merge main

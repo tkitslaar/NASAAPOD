@@ -1,0 +1,7 @@
+{
+    "viewportWidth": 1000,
+    "viewportHeight": 850,
+    "e2e": {
+      "baseUrl": "https://prod.foo.redhat.com:1337"
+    }
+}  
