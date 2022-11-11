@@ -19,6 +19,7 @@
     "node": ">14.0.0"
   },
   "dependencies": {
+    "@patternfly/pfe-card": "^1.12.3",
     "@patternfly/pfe-cta": "^1.12.3",
     "@patternfly/pfe-datetime": "^1.12.3",
     "@patternfly/pfe-progress-indicator": "^1.12.3",
