@@ -1,12 +1,22 @@
-<script setup lang="ts">
+<script lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import "@patternfly/pfe-cta";
 import "@patternfly/pfe-card";
-const framework: String = "Vue";
+import { defineComponent } from 'vue';
+import apicall from "./components/apicall.vue";
+
+export default defineComponent({
+  name: 'app',
+  components: {
+    apicall
+  }
+})
+
 </script>
 <template>
-  <h1 class="test">This is a {{ framework }} template</h1>
+  <h1 class="test">This is a Vue template</h1>
+  <apicall></apicall>
   <pfe-cta>
     <a href="https://github.com/">GitHub</a>
   </pfe-cta>
