@@ -3,7 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import "@patternfly/pfe-cta";
 import "@patternfly/pfe-card";
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import apicall from "./components/apicall.vue";
 
 export default defineComponent({
@@ -16,7 +16,9 @@ export default defineComponent({
 </script>
 <template>
   <h1 class="test">This is a Vue template</h1>
-  <apicall></apicall>
+  <div>
+    <apicall />
+  </div>
   <pfe-cta>
     <a href="https://github.com/">GitHub</a>
   </pfe-cta>
