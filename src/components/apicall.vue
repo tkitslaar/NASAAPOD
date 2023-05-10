@@ -32,7 +32,7 @@ export default {
         console.error(error)
       }
     }
-
+      // response.status, throw etc here
     onMounted(() => {
       fetchData()
     })
