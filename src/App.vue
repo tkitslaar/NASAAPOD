@@ -14,33 +14,56 @@ export default defineComponent({
 })
 
 </script>
-<template>
-  <h1 class="test">This is a Vue template</h1>
-  <div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cta-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .cta-container pfe-cta {
+    margin: 0.5rem;
+  }
+
+  pfe-card {
+    margin: 1rem;
+  }
+</style>
+
+<template class="container">
+  <div class="cta-container">
     <apicall />
   </div>
-  <pfe-cta>
-    <a href="https://github.com/">GitHub</a>
-  </pfe-cta>
-  <pfe-cta priority="primary">
-    <a href="https://pfelements.github.io/">Learn more about PFElements</a>
-  </pfe-cta>
-
-  <pfe-cta priority="secondary">
-    <a href="https://redhat.com/">Red Hat</a>
-  </pfe-cta>
-
-  <pfe-cta priority="secondary" variant="wind">
-    <a href="https://redhat.com/">Red Hat</a>
-  </pfe-cta>
-
-  <pfe-cta priority="primary" color="lightest">
-    <a href="https://pfelements.github.io/">Learn more about PFElements</a>
-  </pfe-cta>
-
-  <pfe-cta priority="secondary" color="complement">
-    <a href="https://redhat.com/">Red Hat</a>
-  </pfe-cta>
+  <div class="cta-container">
+    <pfe-cta>
+      <a href="https://github.com/">GitHub</a>
+    </pfe-cta>
+    <pfe-cta priority="primary">
+      <a href="https://pfelements.github.io/">Learn more about PFElements</a>
+    </pfe-cta>
+    <pfe-cta priority="secondary">
+      <a href="https://redhat.com/">Red Hat</a>
+    </pfe-cta>
+    <pfe-cta priority="secondary" variant="wind">
+      <a href="https://redhat.com/">Red Hat</a>
+    </pfe-cta>
+    <pfe-cta priority="primary" color="lightest">
+      <a href="https://pfelements.github.io/">Learn more about PFElements</a>
+    </pfe-cta>
+    <pfe-cta priority="secondary" color="complement">
+      <a href="https://redhat.com/">Red Hat</a>
+    </pfe-cta>
+  </div>
 
   <pfe-card>
     <h2 slot="header">Card header</h2>
@@ -48,9 +71,4 @@ export default defineComponent({
     <p slot="footer">This is the footer</p>
   </pfe-card>
 </template>
-<style>
-.test {
-  display: grid;
-  place-items: center;
-}
-</style>
+

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>NASA Astronomy Picture of the Day</p>
+    <p id="title">NASA Astronomy Picture of the Day</p>
     <div>
       <div v-if="!loading && loaded">
         <img :src="items.hdurl" alt="NASA Astronomy Picture of the Day" @load="loaded = true">
@@ -11,6 +11,21 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+img {
+  max-width: 100%;
+  height: auto;
+}
+#title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  justify-content: center;
+  display: flex;
+  font-family: 'Rajdhani', sans-serif;
+}
+</style>
 
 <script lang="ts">
 import { ref, onMounted } from 'vue'
