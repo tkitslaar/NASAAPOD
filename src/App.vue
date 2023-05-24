@@ -3,6 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import "@patternfly/pfe-cta";
 import "@patternfly/pfe-card";
+import '@patternfly/elements/pf-card/pf-card.js';
 import { defineComponent, ref, onMounted } from 'vue';
 import apicall from "./components/apicall.vue";
 
@@ -70,5 +71,12 @@ export default defineComponent({
     <p>This is the pfe-card body.</p>
     <p slot="footer">This is the footer</p>
   </pfe-card>
+
+  <pf-card>
+  <h3 slot="header">Card header</h3>
+  <p>This is the pf-card body.</p>
+  <pf-button slot="footer">OK</pf-button>
+</pf-card>
+
 </template>
 
