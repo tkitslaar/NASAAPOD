@@ -8,6 +8,8 @@ import { defineComponent, ref, onMounted } from 'vue';
 import apicall from "./components/apicall.vue";
 import "@patternfly/elements/pf-card/pf-card.js";
 import '@patternfly/elements/pf-tabs/pf-tabs.js';
+import '@carbon/web-components/es/components/tabs/index.js';
+import tabs from './components/tabs.vue';
 
 export default defineComponent({
   name: 'app',
@@ -15,7 +17,8 @@ export default defineComponent({
     msg: String
   },
   components: {
-    apicall
+    apicall,
+    tabs
   }
 })
 
@@ -54,40 +57,6 @@ pf-card {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   overflow: hidden;
-}
-
-.tabs-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-}
-
-pf-tabs {
-  --pf-c-tabs__item--BackgroundColor: #fff;
-  --pf-c-tabs__item--m-current--BackgroundColor: #a5a7b8;
-  --pf-c-tabs__item--hover--BackgroundColor: #f0f0f0;
-  --pf-c-tabs--before--BorderColor: #a5a7b8;
-  --pf-c-tabs__item--m-current--Color: #fff;
-  --pf-c-tabs__item--Color: #000;
-  --pf-c-tabs__item--hover--Color: #000;
-  --pf-c-tabs__item--BorderColor: #a5a7b8;
-  --pf-c-tabs__item--m-current--ZIndex: 1;
-  --pf-c-tabs--Inset: 0;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-
-pf-tab {
-  --pf-c-tabs__item--m-current--BackgroundColor: #007bba;
-  --pf-c-tabs__item--m-current--Color: #ffffff;
-}
-
-pf-tab-panel {
-  padding: 1em;
 }
 
 :root {
@@ -137,14 +106,7 @@ pf-tab-panel {
     </pf-card>
   </div>
 
-  <div class="tabs-container">
-    <pf-tabs>
-      <pf-tab slot="tab">Users</pf-tab>
-      <pf-tab-panel>Users</pf-tab-panel>
-      <pf-tab slot="tab">Containers</pf-tab>
-      <pf-tab-panel>Containers</pf-tab-panel>
-      <pf-tab slot="tab">Database</pf-tab>
-      <pf-tab-panel>Database</pf-tab-panel>
-    </pf-tabs>
+  <div>
+    <tabs />  
   </div>
 </template>
