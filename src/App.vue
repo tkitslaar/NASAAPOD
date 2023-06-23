@@ -8,7 +8,6 @@ import { defineComponent, ref, onMounted } from 'vue';
 import apicall from "./components/apicall.vue";
 import "@patternfly/elements/pf-card/pf-card.js";
 import '@patternfly/elements/pf-tabs/pf-tabs.js';
-import '@carbon/web-components/es/components/tabs/index.js';
 import tabs from './components/tabs.vue';
 
 export default defineComponent({
