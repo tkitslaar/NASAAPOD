@@ -19,7 +19,6 @@
     "node": ">14.0.0"
   },
   "dependencies": {
-    "@carbon/web-components": "^1.28.0",
     "@patternfly/elements": "^2.1.0",
     "@patternfly/pfe-card": "^1.12.3",
     "@patternfly/pfe-cta": "^1.12.3",
