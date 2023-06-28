@@ -46,9 +46,9 @@ Cypress:
 QA-Deploy-Spaship:
   stage: deploy
   # only include this job in the pipeline if changes were pushed to the pre-prod branch
-  rules:
-    - if: $CI_COMMIT_BRANCH == "pre-prod"
-      when: manual
+  # rules:
+  #   - if: $CI_COMMIT_BRANCH == "pre-prod"
+  #     when: manual
   tags:
     - docker
   image: node:fermium
