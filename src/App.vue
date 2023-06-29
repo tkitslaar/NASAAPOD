@@ -8,6 +8,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import apicall from "./components/apicall.vue";
 import "@patternfly/elements/pf-card/pf-card.js";
 import '@patternfly/elements/pf-tabs/pf-tabs.js';
+import '@patternfly/elements/pf-jump-links/pf-jump-links.js';
 import tabs from './components/tabs.vue';
 
 export default defineComponent({
@@ -50,7 +51,12 @@ export default defineComponent({
   gap: 1rem;
 }
 
-pf-card {
+#cards {
+  justify-content: center;
+  
+}
+
+/* pf-card {
   margin: 1rem;
   width: 250px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
@@ -60,7 +66,7 @@ pf-card {
 
 :root {
   --pf-c-card--BackgroundColor: #a5a7b8;
-}
+} */
 </style>
 
 <template class="container">
@@ -71,8 +77,8 @@ pf-card {
     <!-- Your CTAs here -->
   </div>
 
-  <div class="card-container">
-    <pf-card rounded>
+  <div id="cards" class="card-container">
+    <pf-card class="pf-m-selectable">
       <h3 slot="header">Card 1</h3>
       <p>This is the pf-card body.</p>
       <pf-cta slot="footer" priority="primary">
@@ -105,7 +111,7 @@ pf-card {
     </pf-card>
   </div>
 
-  <div>
+  <div id="tabs">
     <tabs />  
   </div>
 </template>

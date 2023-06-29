@@ -1,7 +1,13 @@
 <template>
   <div>
     <p id="title">NASA Astronomy Picture of the Day</p>
-    <div>
+    <p id="nav"><pf-jump-links centered>
+        <pf-jump-links-item href="#image">Image</pf-jump-links-item>
+        <pf-jump-links-item href="#cards">Cards</pf-jump-links-item>
+        <pf-jump-links-item href="#tabs">Tabs</pf-jump-links-item>
+      </pf-jump-links>
+    </p>
+    <div id="image">
       <div v-if="!loading && loaded">
         <img :src="items.hdurl" alt="NASA Astronomy Picture of the Day" @load="loaded = true">
       </div>
@@ -14,10 +20,12 @@
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+
 img {
   max-width: 100%;
   height: auto;
 }
+
 #title {
   font-size: 3.5rem;
   font-weight: bold;
@@ -47,7 +55,7 @@ export default {
         console.error(error)
       }
     }
-      // response.status, throw etc here
+    // response.status, throw etc here
     onMounted(() => {
       fetchData()
     })
