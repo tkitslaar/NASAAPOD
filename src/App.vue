@@ -24,6 +24,28 @@ export default defineComponent({
 
 </script>
 
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import Home from './components/Home.vue'
+import About from './components/About.vue'
+import NotFound from './components/NotFound.vue'
+
+const routes = {
+  '/': Home,
+  '/about': About
+}
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'] || NotFound
+})
+</script>
+
 <style>
 .container {
   display: flex;
@@ -114,4 +136,9 @@ export default defineComponent({
   <div id="tabs">
     <tabs />  
   </div>
+
+  <a href="#/">NASA APIs</a> |
+  <a href="#/about">About APOD</a> |
+  <component :is="currentView" />
+  
 </template>
