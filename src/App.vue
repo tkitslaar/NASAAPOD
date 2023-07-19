@@ -47,48 +47,6 @@ const currentView = computed(() => {
 </script>
 
 <style>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.cta-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.cta-container pf-cta {
-  margin: 0.5rem;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-#cards {
-  justify-content: center;
-  
-}
-
-/* pf-card {
-  margin: 1rem;
-  width: 250px;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-:root {
-  --pf-c-card--BackgroundColor: #a5a7b8;
-} */
 </style>
 
 <template class="container">
@@ -99,7 +57,7 @@ const currentView = computed(() => {
     <!-- Your CTAs here -->
   </div>
 
-  <div id="cards" class="card-container">
+  <!-- <div id="cards" class="card-container">
     <pf-card class="pf-m-selectable">
       <h3 slot="header">Card 1</h3>
       <p>This is the pf-card body.</p>
@@ -131,7 +89,7 @@ const currentView = computed(() => {
         <a href="#">Learn More</a>
       </pf-cta>
     </pf-card>
-  </div>
+  </div> -->
 
   <div id="tabs">
     <tabs />  
