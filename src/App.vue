@@ -57,7 +57,7 @@ const currentView = computed(() => {
     <!-- Your CTAs here -->
   </div>
 
-  <!-- <div id="cards" class="card-container">
+  <div id="cards" class="card-container">
     <pf-card class="pf-m-selectable">
       <h3 slot="header">Card 1</h3>
       <p>This is the pf-card body.</p>
@@ -89,7 +89,7 @@ const currentView = computed(() => {
         <a href="#">Learn More</a>
       </pf-cta>
     </pf-card>
-  </div> -->
+  </div>
 
   <div id="tabs">
     <tabs />  
