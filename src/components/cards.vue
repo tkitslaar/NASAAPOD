@@ -1,6 +1,6 @@
 <template>
 <div id="cards" class="card-container">
-    <pf-card class="pf-m-selectable">
+    <pf-card rounded>
       <h3 slot="header">Card 1</h3>
       <p>This is the pf-card body.</p>
       <pf-cta slot="footer" priority="primary">
@@ -33,3 +33,15 @@
     </pf-card>
   </div>
   </template>
+
+<script lang="ts">
+
+import "@patternfly/elements/pf-card/pf-card.js";
+
+
+export default {
+    name: 'cards',
+    mounted() {
+    }
+}
+</script>
